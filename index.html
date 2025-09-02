@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CoachNote – Game-Ready Football Drill Library</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <meta name="description"
+        content="The drill library that turns your players into game-ready, highly technical athletes. Real game scenarios. Real development.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Minimal inline styles required for the responsive toggle (added so index.html works standalone) -->
+    <style>
+        /* Ensure header container can position the dropdown */
+        .site-header .container {
+            position: relative;
+        }
+
+        /* Hidden by default - will show on smaller screens */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            line-height: 1;
+            color: inherit;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Responsive behavior: at widths <= 1200px hide the inline menu and show toggle */
+        @media (max-width: 1200px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            /* hide the inline menu by default on small screens */
+            .header__inline-menu {
+                display: none !important;
+                flex-direction: column;
+                gap: 0;
+                background: var(--bg-elev, #161617);
+                padding: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                border-top: 1px solid var(--border, #2a2b2f);
+                z-index: 40;
+            }
+
+            /* show when active */
+            .header__inline-menu.active {
+                display: flex !important;
+            }
+
+            /* ensure menu list items stretch full width on mobile */
+            .header__inline-menu .list-menu__item {
+                width: 100%;
+            }
+
+            /* make header content layout friendly on smaller screens */
+            .site-header .container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="container">
+            <a class="brand" href="#" aria-label="CoachNote home">CoachNote</a>
+
+            <!-- NAV TOGGLE BUTTON (appears on viewport widths <= 1200px) -->
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="HeaderMenu-MenuList-2">
+                ☰
+            </button>
+
+            <nav class="header__inline-menu" id="HeaderMenu">
+                <ul class="list-menu list-menu--inline" role="list">
+                    <li><a id="HeaderMenu-home" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>Home</span>
+                        </a></li>
+                    <li><header-menu>
+                            <details id="Details-HeaderMenu-2">
+                                <summary id="HeaderMenu-training-centre"
+                                    class="header__menu-item list-menu__item link focus-inset" role="button"
+                                    aria-expanded="false" aria-controls="HeaderMenu-MenuList-2">
+                                    <span class="header__active-menu-item">Training Centre</span><svg
+                                        class="icon icon-caret" viewBox="0 0 10 6">
+                                        <path fill="currentColor" fill-rule="evenodd"
+                                            d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </summary>
+                                <ul id="HeaderMenu-MenuList-2"
+                                    class="header__submenu list-menu list-menu--disclosure color-accent-2 gradient caption-large motion-reduce global-settings-popup"
+                                    role="list" tabindex="-1">
+                                    <li><a id="HeaderMenu-training-centre-training-centre" href="#"
+                                            class="header__menu-item list-menu__item link link--text focus-inset caption-large list-menu__item--active"
+                                            aria-current="page">
+                                            Training Centre
+                                        </a></li>
+                                    <li><a id="HeaderMenu-training-centre-drill-library" href="#"
+                                            class="header__menu-item list-menu__item link link--text focus-inset caption-large">
+                                            Drill Library
+                                        </a></li>
+                                    <li><a id="HeaderMenu-training-centre-full-season-training-plans"
+                                            href="#"
+                                            class="header__menu-item list-menu__item link link--text focus-inset caption-large">
+                                            Full Season Training Plans
+                                        </a></li>
+                                    <li><a id="HeaderMenu-training-centre-1-to-1-coaching-drills"
+                                            href="#"
+                                            class="header__menu-item list-menu__item link link--text focus-inset caption-large">
+                                            1 to 1 Coaching Drills
+                                        </a></li>
+                                    <li><a id="HeaderMenu-training-centre-set-piece-hub" href="#"
+                                            class="header__menu-item list-menu__item link link--text focus-inset caption-large">
+                                            Set Piece Hub
+                                        </a></li>
+                                    <li><a id="HeaderMenu-training-centre-sign-up-for-full-access"
+                                            href="#"
+                                            class="header__menu-item list-menu__item link link--text focus-inset caption-large">
+                                            Sign up for full access
+                                        </a></li>
+                                </ul>
+                            </details>
+                        </header-menu></li>
+                    <li><a id="HeaderMenu-drill-library" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>Drill Library</span>
+                        </a></li>
+                    <li><a id="HeaderMenu-ebooks" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>eBooks</span>
+                        </a></li>
+                    <li><a id="HeaderMenu-coach-education" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>Coach Education</span>
+                        </a></li>
+                    <li><a id="HeaderMenu-coach-profiles" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>Coach Profiles</span>
+                        </a></li>
+                    <li><a id="HeaderMenu-club-memberships" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>Club Memberships</span>
+                        </a></li>
+                    <li><a id="HeaderMenu-mailing-list" href="#"
+                            class="header__menu-item list-menu__item link link--text focus-inset">
+                            <span>Mailing List</span>
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="site-main" role="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container hero__grid">
+                <div class="hero__content">
+                    <p class="preheadline">Stop running drills that look good in practice but fail on match day</p>
+                    <h1 class="headline">The Drill Library That Turns Your Players Into Game-Ready, Highly Technical
+                        Athletes</h1>
+                    <p class="subheadline">Learn the exact drills and breakdowns top players and elite coaches use — so
+                        your players level up fast</p>
+                    <!-- VSL / Video Placeholder -->
+                    <div class="hero__media">
+                        <!-- VSL placeholder centered, responsive -->
+                        <figure class="vsl"
+                            aria-label="Video placeholder: Show problems, bust myths, & present Drill Library">
+                            <button class="vsl__play" aria-label="Play video">
+                                <span class="visually-hidden">Play</span>
+                            </button>
+                        </figure>
+                    </div>
+                    <!-- CTA -->
+                    <div class="cta-group">
+                        <a href="#get-access" class="btn btn-primary"
+                            aria-label="Get Instant Access to Game-Ready Drills">Get Instant Access to Game-Ready
+                            Drills</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Body Sections -->
+        <section class="section section--copy">
+            <div class="container content">
+                <p>Aren't you tired of players stagnating despite running countless drills?</p>
+                <p>I used to think drills just aren’t useful — that players forget everything as soon as they step onto
+                    the field.</p>
+                <p>You’ve probably felt it too: players look sharp in training but disappear in matches.</p>
+                <p>And on top of that, parents start doubting your ability to coach.</p>
+                <p><strong>The truth is: not all drills fail — only bad drills fail.</strong></p>
+                <p>For drills to actually work, they must be based on real game scenarios that appear often and
+                    consistently.</p>
+            </div>
+        </section>
+
+        <section class="section section--why-bad">
+            <div class="container content">
+                <h2>Why Bad Drills Fail?</h2>
+                <ul class="list">
+                    <li>Bad drills train the wrong instincts.</li>
+                    <li>They focus on patterns and scenarios that rarely, if ever, happen in games.</li>
+                    <li>At best, players build habits that are useless — training time is wasted.</li>
+                    <li>At worst, they learn habits that hurt performance under real game pressure.</li>
+                </ul>
+                <p>Most coaches unknowingly rely on these bad drills… but you don’t have to.</p>
+            </div>
+        </section>
+
+        <section class="section section--difference">
+            <div class="container content">
+                <h2>The Difference: Good Drills</h2>
+                <p>Good drills train the brain to make split-second decisions automatically. Players won’t freeze under
+                    pressure — decision-making becomes instinctive. On game day, they don’t think, they just play.</p>
+            </div>
+        </section>
+
+        <section class="section section--ready">
+            <div class="container content">
+                <h2>What Makes These Drills Game-Ready</h2>
+                <ul class="list list--check">
+                    <li><strong>Pattern-Recognition Focus:</strong> drills repeat real match moments so players
+                        instantly recognize them in games.</li>
+                    <li><strong>Game-Day Transfer:</strong> no “fake” movements, only situations players actually face.
+                    </li>
+                </ul>
+                <p>Stop wasting time on drills that don’t transfer. Start training your players with drills that build
+                    real match instincts, sharp decision-making, and technical mastery.</p>
+                <!-- CTA -->
+                <div class="cta-group">
+                    <a id="get-access" href="#" class="btn btn-primary"
+                        aria-label="Get Instant Access to Game-Ready Drills">Get Instant Access to Game-Ready Drills</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p class="muted">© <span id="year"></span> CoachNote. All rights reserved.</p>
+            <ul class="list-unstyled list-social footer__list-social" role="list">
+                <li class="list-social__item">
+                    <a href="https://www.facebook.com/profile.php?id=61572385652796" class="link list-social__link">
+                        <span class="svg-wrapper"><svg class="icon icon-facebook" viewBox="0 0 20 20">
+                                <path fill="currentColor"
+                                    d="M18 10.049C18 5.603 14.419 2 10 2s-8 3.603-8 8.049C2 14.067 4.925 17.396 8.75 18v-5.624H6.719v-2.328h2.03V8.275c0-2.017 1.195-3.132 3.023-3.132.874 0 1.79.158 1.79.158v1.98h-1.009c-.994 0-1.303.621-1.303 1.258v1.51h2.219l-.355 2.326H11.25V18c3.825-.604 6.75-3.933 6.75-7.951">
+                                </path>
+                            </svg>
+                        </span>
+                        <span class="visually-hidden">Facebook</span>
+                    </a>
+                </li>
+                <li class="list-social__item">
+                    <a href="https://www.instagram.com/coachnotesofficial/" class="link list-social__link">
+                        <span class="svg-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                            </svg>
+                        </span>
+                        <span class="visually-hidden">Instagram</span>
+                    </a>
+                </li>
+                <li class="list-social__item">
+                    <a href="https://www.tiktok.com/@coach_notes" class="link list-social__link">
+                        <span class="svg-wrapper"><svg class="icon icon-tiktok" viewBox="0 0 20 20">
+                                <path fill="currentColor"
+                                    d="M10.511 1.705h2.74s-.157 3.51 3.795 3.768v2.711s-2.114.129-3.796-1.158l.028 5.606A5.073 5.073 0 1 1 8.213 7.56h.708v2.785a2.298 2.298 0 1 0 1.618 2.205z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span class="visually-hidden">TikTok</span>
+                    </a>
+                </li>
+                <li class="list-social__item">
+                    <a href="https://x.com/coachnotesx" class="link list-social__link">
+                        <span class="svg-wrapper"><svg class="icon icon-twitter" viewBox="0 0 20 20">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M7.273 2.8 10.8 7.822 15.218 2.8h1.768l-5.4 6.139 5.799 8.254h-4.658l-3.73-5.31-4.671 5.31H2.558l5.654-6.427L2.615 2.8zm6.242 13.125L5.07 4.109h1.405l8.446 11.816z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                        <span class="visually-hidden">X (Twitter)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Toggle script (keeps original content untouched, only adds interactive toggle behavior) -->
+    <script>
+        (function () {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.header__inline-menu');
+
+            if (!navToggle || !navMenu) return;
+
+            navToggle.addEventListener('click', function (e) {
+                const isActive = navMenu.classList.toggle('active');
+                navToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+                // If the menu is opened, focus the first focusable item for accessibility
+                if (isActive) {
+                    const firstLink = navMenu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+                    if (firstLink) firstLink.focus();
+                }
+            });
+
+            // Close the menu when clicking outside (mobile)
+            document.addEventListener('click', function (e) {
+                if (window.matchMedia && window.matchMedia('(max-width: 1200px)').matches) {
+                    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            navToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }
+            });
+
+            // Ensure the menu state resets when resizing to larger screens
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 1200) {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        })();
+    </script>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
